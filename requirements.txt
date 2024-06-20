@@ -4,3 +4,5 @@ icecream
 pandas
 streamlit
 pbixray
+streamlit_observable
+DateTime
