@@ -1,5 +1,5 @@
 import streamlit as st
-from datetime import datetime
+from datetime import date
 import pandas as pd
 from pbixray.core import PBIXRay
 
