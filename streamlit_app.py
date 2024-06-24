@@ -1,5 +1,5 @@
 import streamlit as st
-from datetime import date
+#from datetime import date
 import pandas as pd
 from pbixray.core import PBIXRay
 
@@ -18,8 +18,8 @@ st.set_page_config(
     #toolbarmode = 'Standard'
 )
 
-st.markdown(
-    f"<div style='text-align: right; font-size: 26px;'>{datetime.now().strftime('%m-%d-%Y %H:%M:%S')}</div>", unsafe_allow_html=True)  
+#st.markdown(
+   # f"<div style='text-align: right; font-size: 26px;'>{datetime.now().strftime('%m-%d-%Y %H:%M:%S')}</div>", unsafe_allow_html=True)  
 with st.sidebar.expander("WebLinks"):
     st.markdown(
         """
