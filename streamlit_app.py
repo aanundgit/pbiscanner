@@ -62,12 +62,9 @@ def app():
         # Unpack the PBIX file to get the schema_df
         model = PBIXRay(uploaded_file)
         st.write(model.metadata)
-        df = pd.DataFrame(model.metadata)
-        df.describe()
-
         met1, met2 = st.columns(2)
         met1.metric(label='Model size', value=sizeof_fmt(model.size))
-        met2.metric(label='# les', value=model.les.size)
+        met2.metric(label='tables', value=model.tables.size)
         st.divider()
         st.write("Schema:")
         st.write(model.schema)
@@ -79,9 +76,9 @@ def app():
             st.write("Power Query code:")
             st.dataframe(model.power_query)
         st.divider()
-        if model.dax_les.size:
-            st.write("DAX les:")
-            st.dataframe(model.dax_les)
+        if model.tables.size:
+            st.write("DAX tables:")
+            st.dataframe(model.dax_tables)
         st.divider()
         if model.dax_measures.size:
             st.write("DAX measures:")
@@ -89,7 +86,7 @@ def app():
         st.divider()
         # Let the user select a le name
         le_name_input = st.selectbox(
-            "Select a le to peek at its contents:", model.les)
+            "Select a table to peek at its contents:", model.tables )
         
         if st.button("Un-VertiPaq"):
             st.dataframe(model.get_le(le_name_input),
