@@ -1,25 +1,25 @@
+import datetime
 import streamlit as st
-#from datetime import date
+from datetime import datetime
 import pandas as pd
 from pbixray.core import PBIXRay
 
 from streamlit_observable import observable
 
 st.set_page_config(
-    page_title="My App",
+    page_title="Power BI Scanner",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="auto",
     menu_items={
-        "Get Help": "https://www.example.com",
-        "Report a Bug": "https://www.example.com",
-        "About": "This is a demo app"
+        
     },
     #toolbarmode = 'Standard'
 )
 
-#st.markdown(
-   # f"<div style='text-align: right; font-size: 26px;'>{datetime.now().strftime('%m-%d-%Y %H:%M:%S')}</div>", unsafe_allow_html=True)  
+st.markdown(
+   f" Date "
+   f"<div style='text-align: left; font-size: 26px;'>{datetime.now().strftime('%m-%d-%Y %H:%M:%S')}</div>", unsafe_allow_html=True)  
 with st.sidebar.expander("WebLinks"):
     st.markdown(
         """
@@ -55,14 +55,15 @@ def app():
     st.title('Power BI :blue[Scanner]')
     st.divider()
     st.subheader('Start Scanning your PBIX file')
-    today = datetime.datetime.now()
-    st.display(today)
+    #today = datetime.datetime.now()
+    #st.subheader(today)
     uploaded_file = st.file_uploader("Upload a PBIX file", type="pbix")
     if uploaded_file:
         # Unpack the PBIX file to get the schema_df
         model = PBIXRay(uploaded_file)
-        df = pd.read_csv(uploaded_file)
         st.write(model.metadata)
+        df = pd.DataFrame(model.metadata)
+        df.describe()
 
         met1, met2 = st.columns(2)
         met1.metric(label='Model size', value=sizeof_fmt(model.size))
@@ -96,13 +97,13 @@ def app():
 
 st.divider()
 
-observers = observable("County Brush", 
-    notebook="d/4f9aa5feff9761c9",
-    targets=["viewof countyCodes"], 
-    observe=["selectedCounties"]
-)
+# observers = observable("City Brush", 
+#     notebook="d/4f9aa5feff9761c9",
+#     targets=["viewof countyCodes"], 
+#     observe=["selectedCounties"]
+# )
 
-selectedCounties = observers.get("selectedCounties")
+# selectedCounties = observers.get("selectedCounties")
 
 if __name__ == '__main__':
     app()
