@@ -10,7 +10,7 @@ from pygwalker.api.streamlit import StreamlitRenderer
 # Streamlit Page Configuration
 # ------------------------------
 st.set_page_config(
-    page_title="Power BI Scanner",
+    page_title="Varana Pbix Scanner",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -205,7 +205,7 @@ if __name__ == '__main__':
 st.markdown(
     """
     <div style="text-align: center; color: #888888; font-size: 12px; margin-top: 20px;">
-        © 2024 Power BI Scanner. All rights reserved.
+        © 2024 Varana. All rights reserved.
         Powered by PBIXRay
     </div>
     """,
