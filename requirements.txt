@@ -5,4 +5,8 @@ pandas
 streamlit
 pbixray
 streamlit_observable
+streamlit
+pygwalker
+ 
+ 
 
