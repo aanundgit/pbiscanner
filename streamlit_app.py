@@ -15,7 +15,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        "About": "Power BI Scanner allows you to upload and analyze your PBIX files efficiently."
+        "About": ""
     },
 )
 
